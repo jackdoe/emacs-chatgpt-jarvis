@@ -1,5 +1,5 @@
 from pyaudio import PyAudio, paInt16
-import wave, whisper, os
+import wave, whisper, os, time
 from pynput import keyboard
 from chatgpt_wrapper import ChatGPT
 
@@ -46,7 +46,7 @@ listener.start()
 bot = ChatGPT()
 model = whisper.load_model("medium.en")
 out("waiting, pres f12 to ask a question...")
-
+print('...')
 while True:
   if LISTEN:
     try:
@@ -69,3 +69,5 @@ while True:
     for chunk in stream:
       response += chunk
       out(response)
+
+  time.sleep(0.1)
