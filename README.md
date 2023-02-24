@@ -9,9 +9,10 @@ ress F12 and it will record you (until you release F12) and transcribe the text 
 __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
 
-![screenshot.png](screenshot.png)
+[![example](http://img.youtube.com/vi/gbWxFrx7yOg/0.jpg)](http://www.youtube.com/watch?v=gbWxFrx7yOg "example")
 
-Video: [example.mov](example.mov)
+
+Raw Video: [example.mov](example.mov)
 
 # install
 
@@ -45,3 +46,10 @@ Add this to your init.el in order to keep watching the jarvis-chatgpt.txt file:
 (file-notify-add-watch
   "/tmp/jarvis-chatgpt.txt" '(change) 'my-jarvis-callback)
 ```
+
+
+# How it looks
+
+![screenshot.png](screenshot.png)
+
+> Dont judge my emacs theme.
