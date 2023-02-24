@@ -44,6 +44,4 @@ Add this to your init.el in order to keep watching the jarvis-chatgpt.txt file:
 
 (file-notify-add-watch
   "/tmp/jarvis-chatgpt.txt" '(change) 'my-jarvis-callback)
-      
-
 ```
