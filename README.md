@@ -8,6 +8,7 @@ ress F12 and it will record you (until you release F12) and transcribe the text 
 
 __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
+Youtube Video of how it works:
 
 [![example](http://img.youtube.com/vi/gbWxFrx7yOg/0.jpg)](http://www.youtube.com/watch?v=gbWxFrx7yOg "example")
 
