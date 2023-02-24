@@ -10,7 +10,7 @@ __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
 Youtube Video of how it works:
 
-[![example](http://img.youtube.com/vi/gbWxFrx7yOg/0.jpg)](http://www.youtube.com/watch?v=gbWxFrx7yOg "example")
+[![example](http://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](http://www.youtube.com/watch?v=P-5RBdM9X-8 "example")
 
 
 Raw Video: [example.mov](example.mov)
