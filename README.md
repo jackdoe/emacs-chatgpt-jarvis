@@ -8,9 +8,13 @@ ress F12 and it will record you (until you release F12) and transcribe the text 
 
 __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
-Youtube Video of how it works:
+Youtube video of how asking a question works:
 
-[![example](http://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](http://www.youtube.com/watch?v=P-5RBdM9X-8 "example")
+[![example question](http://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](http://www.youtube.com/watch?v=P-5RBdM9X-8 "example question")
+
+Youtube video of a refactor code request:
+
+[![example refactor](http://img.youtube.com/vi/uWJ8-JU0aXY/0.jpg)](http://www.youtube.com/watch?v=uWJ8-JU0aXY "example refactor")
 
 # install
 
@@ -26,7 +30,6 @@ Edit jarvis.py if you want to use another key
 * start emacs, and open the CHATGPT buffer
 * press F12 to use
 * press F11 to copy the current selection into "/tmp/jarvis-chatgpt-input.txt" which will be appended to the question, for example if you want to ask it to "refactor this piece of code" you press F11 to copy the seleciton, and then press F12 to ask the question
-
 
 
 Add this to your init.el in order to keep watching the jarvis-chatgpt.txt file:
