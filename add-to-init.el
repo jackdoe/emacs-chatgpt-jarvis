@@ -14,5 +14,6 @@
       
 (defun send-selection-to-jarvis ()
   (interactive)
-  (write-region (buffer-substring (region-beginning) (region-end)) "/tmp/jarvis-chatgpt-input.txt" 0))
+  (if (use-region-p)
+      (write-region (region-beginning) (region-end) "/tmp/jarvis-chatgpt-input.txt" 0)))
 (global-set-key (kbd "<f12>") 'send-selection-to-jarvis)
