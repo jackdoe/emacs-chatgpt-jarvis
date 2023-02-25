@@ -12,3 +12,7 @@
 (file-notify-add-watch
   "/tmp/jarvis-chatgpt.txt" '(change) 'my-jarvis-callback)
       
+(defun send-selection-to-jarvis ()
+  (interactive)
+  (write-region (region-beginning) (region-end) "/tmp/jarvis-chatgpt-input.txt" 0))
+(global-set-key (kbd "<f11>") 'send-selection-to-jarvis)

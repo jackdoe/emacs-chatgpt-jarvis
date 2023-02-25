@@ -12,9 +12,6 @@ Youtube Video of how it works:
 
 [![example](http://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](http://www.youtube.com/watch?v=P-5RBdM9X-8 "example")
 
-
-Raw Video: [example.mov](example.mov)
-
 # install
 
 * install https://github.com/openai/whisper
@@ -28,6 +25,8 @@ Edit jarvis.py if you want to use another key
 * `python jarvis.py` (first time it has to download the medium.en model which is 1.4gb) and then it takes a minute to load it
 * start emacs, and open the CHATGPT buffer
 * press F12 to use
+* press F11 to copy the current selection into "/tmp/jarvis-chatgpt-input.txt" which will be appended to the question, for example if you want to ask it to "refactor this piece of code" you press F11 to copy the seleciton, and then press F12 to ask the question
+
 
 
 Add this to your init.el in order to keep watching the jarvis-chatgpt.txt file:
@@ -46,6 +45,11 @@ Add this to your init.el in order to keep watching the jarvis-chatgpt.txt file:
 
 (file-notify-add-watch
   "/tmp/jarvis-chatgpt.txt" '(change) 'my-jarvis-callback)
+
+(defun send-selection-to-jarvis ()
+  (interactive)
+  (write-region (region-beginning) (region-end) "/tmp/jarvis-chatgpt-input.txt" 0))
+(global-set-key (kbd "<f11>") 'send-selection-to-jarvis)
 ```
 
 

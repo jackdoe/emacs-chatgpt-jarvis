@@ -6,6 +6,7 @@ from chatgpt_wrapper import ChatGPT
 LISTEN = False
 OUTPUT = "/tmp/jarvis-chatgpt.txt"
 RECORDING_FILE = "/tmp/jarvis-chatgpt.wav"
+EXTRA_INPUT = "/tmp/jarvis-chatgpt-input.txt"
 
 def on_press(key):
   global LISTEN
@@ -20,7 +21,16 @@ def on_release(key):
 def out(t):
   with open(OUTPUT, "w") as f:
     f.write(t)
-  
+
+def read_extra_file():
+  data = ''
+  try:
+    with open(EXTRA_INPUT, "r") as f:
+      data = f.read()
+  finally:
+    os.remove(EXTRA_INPUT)
+  return data
+ 
 def microphone(name, seconds):
   with wave.open(name, 'wb') as wf:
     p = PyAudio()
@@ -60,9 +70,11 @@ while True:
 
     out(f"decoded: {r['text']}, asking chatgpt...")
     question = r["text"]
+    extra = read_extra_file()
     stream  = bot.ask_stream(f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
 
 {question}
+{extra}
 """)
 
     response = f"> {question}\n\n"
