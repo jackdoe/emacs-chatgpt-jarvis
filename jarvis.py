@@ -60,7 +60,7 @@ listener.start()
 
 bot = ChatGPT()
 model = whisper.load_model("medium.en")
-out("waiting, pres f12 to ask a question...")
+out("waiting, pres f12 to ask a question, region selection will be appended...")
 print('...')
 while True:
   if LISTEN:
@@ -72,10 +72,10 @@ while True:
       r = model.transcribe(RECORDING_FILE)
     finally:
       os.remove(RECORDING_FILE)
-
-    out(f"decoded: {r['text']}, asking chatgpt...")
-    question = r["text"]
     extra = read_extra_file()
+    out(f"decoded: {r['text']}\n{extra}\nasking chatgpt...")
+    question = r["text"]
+
     
     stream  = bot.ask_stream(f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
 
