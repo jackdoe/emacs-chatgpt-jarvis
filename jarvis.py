@@ -30,7 +30,10 @@ def read_extra_file():
   except:
     pass
   finally:
-    os.remove(EXTRA_INPUT)
+    try:
+      os.remove(EXTRA_INPUT)
+    except:
+      pass
   return data
 
 def microphone(name, seconds):
@@ -73,6 +76,7 @@ while True:
     out(f"decoded: {r['text']}, asking chatgpt...")
     question = r["text"]
     extra = read_extra_file()
+    
     stream  = bot.ask_stream(f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
 
 {question}
