@@ -35,6 +35,7 @@ Edit jarvis.py if you want to use another key
 * Run `python jarvis.py` in your terminal. Note that the first time you run it, the `medium.en` model, which is 1.4GB in size, will be downloaded. It may take up to a minute to load the model.
 * Open Emacs and navigate to the CHATGPT buffer.
 * Press the F12 key to ask a question. If you have a region of text selected, it will be saved to `/tmp/jarvis-chatgpt-input.txt` and appended to your question. For example, if you want to ask Jarvis to "refactor this code", select the code and then press F12.
+* If you press F12 for less than a second it will just send the selected region to ChatGPT.
 
 Add this to your init.el in order to keep watching the jarvis-chatgpt.txt file:
 

@@ -64,18 +64,21 @@ out("waiting, pres f12 to ask a question, region selection will be appended...")
 print('...')
 while True:
   if LISTEN:
+    question = ''
     try:
       out("listening...")
+      t0 = time.time()
       microphone(RECORDING_FILE, 60)
-
-      out("transcribing...")
-      r = model.transcribe(RECORDING_FILE)
+      if time.time() - t0 > 1:
+        out("transcribing...")
+        r = model.transcribe(RECORDING_FILE)
+        question = r["text"]
+      else:
+        question = ''
     finally:
       os.remove(RECORDING_FILE)
     extra = read_extra_file()
-    out(f"decoded: {r['text']}\n{extra}\nasking chatgpt...")
-    question = r["text"]
-
+    out(f"decoded: {question}\n{extra}\nasking chatgpt...")
     
     stream  = bot.ask_stream(f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
 
@@ -83,9 +86,11 @@ while True:
 {extra}
 """)
 
-    response = f"> {question}\n\n"
+    response = f"# QUESTION:\n{question}\n{extra}\n# CHARGPT START\n"
     for chunk in stream:
       response += chunk
       out(response)
+    response += '\n# CHATGPT END\n'
+    out(response)
 
   time.sleep(0.1)
