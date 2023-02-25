@@ -10,11 +10,11 @@ __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
 Youtube video of how asking a question works:
 
-[![example question](http://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](http://www.youtube.com/watch?v=P-5RBdM9X-8 "example question")
+[![example question](https://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](https://www.youtube.com/watch?v=P-5RBdM9X-8 "example question")
 
 Youtube video of a refactor code request:
 
-[![example refactor](http://img.youtube.com/vi/uWJ8-JU0aXY/0.jpg)](http://www.youtube.com/watch?v=uWJ8-JU0aXY "example refactor")
+[![example refactor](https://img.youtube.com/vi/uWJ8-JU0aXY/0.jpg)](https://www.youtube.com/watch?v=uWJ8-JU0aXY "example refactor")
 
 # install
 
