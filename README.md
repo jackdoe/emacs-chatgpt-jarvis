@@ -8,7 +8,7 @@ To transcribe your speech using OpenAI's Whisper, press the F12 key to start rec
 
 __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
-Youtube videos demonstrating:
+Youtube videos showing how it feels:
 
 * asking a question:
 
