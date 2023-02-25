@@ -27,10 +27,12 @@ def read_extra_file():
   try:
     with open(EXTRA_INPUT, "r") as f:
       data = f.read()
+  except:
+    pass
   finally:
     os.remove(EXTRA_INPUT)
   return data
- 
+
 def microphone(name, seconds):
   with wave.open(name, 'wb') as wf:
     p = PyAudio()
