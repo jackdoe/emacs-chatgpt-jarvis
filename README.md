@@ -22,10 +22,13 @@ Youtube videos showing how it feels:
 
 [![example rewrite](https://img.youtube.com/vi/4Jyhs6SfFl0/0.jpg)](https://www.youtube.com/watch?v=4Jyhs6SfFl0 "example rewrite")
 
-# install
+# Install
 
+The whisper/pyaudio/chatgpt-wrapper are a bit more involved than pip install, whisper needs ffmpeg for example, so its best to follow the instructions on their homepages:
+
+* pip install pynput
 * install https://github.com/openai/whisper
-* pip install pyaudio pynput
+* install https://pypi.org/project/PyAudio/ (on windows its just pip install pyaudio)
 * install https://github.com/mmabrouk/chatgpt-wrapper
 
 Edit jarvis.py if you want to use another key
