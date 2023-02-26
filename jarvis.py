@@ -79,7 +79,7 @@ while True:
       os.remove(RECORDING_FILE)
     extra = read_extra_file()
     out(f"decoded: {question}\n{extra}\nasking chatgpt...")
-    
+
     stream  = bot.ask_stream(f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
 
 {question}
@@ -93,4 +93,4 @@ while True:
     response += '\n# CHATGPT END\n'
     out(response)
 
-  time.sleep(0.1)
+  time.sleep(0.01)
