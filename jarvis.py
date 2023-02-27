@@ -76,10 +76,14 @@ while True:
       else:
         question = ''
     finally:
-      os.remove(RECORDING_FILE)
+      try:
+        os.remove(RECORDING_FILE)
+      except:
+        pass
     extra = read_extra_file()
     out(f"decoded: {question}\n{extra}\nasking chatgpt...")
 
+    bot.refresh_session()
     stream  = bot.ask_stream(f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
 
 {question}
