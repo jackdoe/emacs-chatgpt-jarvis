@@ -84,3 +84,7 @@ The output from ChatGPT is saved to `/tmp/jarvis-chatgpt.txt`, which is overwrit
 ![screenshot.png](screenshot.png)
 
 > Dont judge my emacs theme.
+
+# BUGS
+
+Because openai does not have API, chatgpt-wrapper uses the active firefox session via playwright, which is not super reliable, sometimes you might have to restart jarvis.py
