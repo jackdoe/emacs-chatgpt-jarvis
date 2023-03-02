@@ -4,7 +4,7 @@
 
 This is a proof of concept program that allows you to use voice to interact with chatgpt and see the result in emacs.
 
-To transcribe your speech using OpenAI's Whisper, press the F12 key to start recording. Whisper will continue to transcribe your speech until you release the F12 key. After recording, ask ChatGPT for assistance and print the output in the buffer.
+To transcribe your speech using OpenAI's Whisper (it uses it locally, your voice is not sent anywhere), press the F12 key to start recording. Whisper will continue to transcribe your speech until you release the F12 key. After recording, ask ChatGPT for assistance and print the output in the buffer.
 
 __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
