@@ -90,7 +90,7 @@ while True:
 {extra}
 """)
 
-    response = f"# QUESTION:\n{question}\n{extra}\n# CHARGPT START\n"
+    response = f"# QUESTION:\n{question}\n{extra}\n# CHARTPT START\n"
     for chunk in stream:
       response += chunk
       out(response)

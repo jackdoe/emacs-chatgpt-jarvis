@@ -2,7 +2,7 @@ import openai
 from pyaudio import PyAudio, paInt16
 import wave, whisper, os, time
 from pynput import keyboard
-
+import traceback
 LISTEN = False
 OUTPUT = "/tmp/jarvis-chatgpt.txt"
 RECORDING_FILE = "/tmp/jarvis-chatgpt.wav"
@@ -83,20 +83,23 @@ while True:
     extra = read_extra_file()
     out(f"decoded: {question}\n{extra}\nasking chatgpt...")
 
-    chatgpt_request = f"""You are the best software developer in the world, most experienced in go and python, answer the following question:
+    chatgpt_request = f"{question}\n{extra}"
 
-{question}
-{extra}
-"""
+    try:
+      completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", 
+        messages=[
+          {"role": "system", "content": "You are the best software developer in the world, most experienced in go and python, answer the following question:"},
+          {"role": "user", "content": chatgpt_request}
+        ]
+      )
 
-    completion = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo", 
-      messages=[{"role": "user", "content": chatgpt_request}]
-    )
-
-    response = f"# QUESTION:\n{question}\n{extra}\n# CHARGPT START\n"
-    response += completion.choices[0].message.content
-    response += '\n# CHATGPT END\n'
-    out(response)
+      response = f"# QUESTION:\n{question}\n{extra}\n# CHATGPT START\n"
+      response += completion.choices[0].message.content
+      response += '\n# CHATGPT END\n'
+      out(response)
+    except Exception as e:
+      exception_stack = traceback.format_exc()
+      out(f"Error: {str(e)}\n\n{exception_stack}")
 
   time.sleep(0.01)
