@@ -29,12 +29,13 @@ The whisper/pyaudio/chatgpt-wrapper are a bit more involved than pip install, wh
 * pip install pynput
 * install https://github.com/openai/whisper
 * install https://pypi.org/project/PyAudio/ (on windows its just pip install pyaudio)
-* install https://github.com/mmabrouk/chatgpt-wrapper
+* install https://github.com/mmabrouk/chatgpt-wrapper or `pip install openai` if you have an api key from openai: https://platform.openai.com/account/api-keys
 
 Edit jarvis.py if you want to use another key
 
 # Running and Using jarvis
 
+* If you have an API key, export it as OPENAI_API_KEY and use `jarvis-chatgpt-api.py` instead of `jarvis.py`
 * Run `python jarvis.py` in your terminal. Note that the first time you run it, the `medium.en` model, which is 1.4GB in size, will be downloaded. It may take up to a minute to load the model.
 * Open Emacs and navigate to the CHATGPT buffer.
 * Press the F12 key to ask a question. If you have a region of text selected, it will be saved to `/tmp/jarvis-chatgpt-input.txt` and appended to your question. For example, if you want to ask Jarvis to "refactor this code", select the code and then press F12.
@@ -87,4 +88,4 @@ The output from ChatGPT is saved to `/tmp/jarvis-chatgpt.txt`, which is overwrit
 
 # BUGS
 
-Because openai does not have API, chatgpt-wrapper uses the active firefox session via playwright, which is not super reliable, sometimes you might have to restart jarvis.py
+Because openai does not have API, chatgpt-wrapper uses the active firefox session via playwright, which is not super reliable, sometimes you might have to restart jarvis.py, so if you can get a key from openai and use `jarvis-chatgpt-api.py`
