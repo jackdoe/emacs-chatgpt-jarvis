@@ -10,6 +10,10 @@ __It stores the recording (up to 60 seconds) in /tmp/jarvis-chatgpt.wav__
 
 Youtube videos showing how it feels:
 
+* using the chatgpt api (instead the headless browser wrapper) to explanin and refactor code:
+
+[![example explain and refactor code](https://img.youtube.com/vi/KX0ZaXcgXNc/0.jpg)](https://www.youtube.com/watch?v=KX0ZaXcgXNc "example explain and refactor")
+
 * asking a question:
 
 [![example question](https://img.youtube.com/vi/P-5RBdM9X-8/0.jpg)](https://www.youtube.com/watch?v=P-5RBdM9X-8 "example question")
