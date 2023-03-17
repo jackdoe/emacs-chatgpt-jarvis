@@ -2,11 +2,15 @@ import openai
 from pyaudio import PyAudio, paInt16
 import wave, whisper, os, time
 from pynput import keyboard
+from threading import Thread,Event
+from itertools import cycle
 import traceback
+
 LISTEN = False
 OUTPUT = "/tmp/jarvis-chatgpt.txt"
 RECORDING_FILE = "/tmp/jarvis-chatgpt.wav"
 EXTRA_INPUT = "/tmp/jarvis-chatgpt-input.txt"
+DONE = Event()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def on_press(key):
@@ -56,12 +60,20 @@ def microphone(name, seconds):
     stream.close()
     p.terminate()
 
+def waiting(question, extra):
+  spinner = cycle(list('|/-\\'))
+  while not DONE.is_set():
+    out(f"decoded: {question}\n{extra}\nasking chatgpt... " + next(spinner))
+    DONE.wait(timeout=0.1)
+  
 listener = keyboard.Listener(on_press=on_press,on_release=on_release)
 listener.start()
+
 
 model = whisper.load_model("medium.en")
 out("waiting, pres f12 to ask a question, region selection will be appended...")
 print('...')
+
 while True:
   if LISTEN:
     question = ''
@@ -80,12 +92,17 @@ while True:
         os.remove(RECORDING_FILE)
       except:
         pass
-    extra = read_extra_file()
-    out(f"decoded: {question}\n{extra}\nasking chatgpt...")
 
-    chatgpt_request = f"{question}\n{extra}"
+    extra = read_extra_file()
+
+    DONE.clear()
+    t0 = Thread(target=waiting, args=(question, extra,))
+    t0.start()
+
+    response = f"# QUESTION:\n{question}\n{extra}\n# CHATGPT START\n"
 
     try:
+      chatgpt_request = f"{question}\n{extra}"
       completion = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages=[
@@ -94,12 +111,15 @@ while True:
         ]
       )
 
-      response = f"# QUESTION:\n{question}\n{extra}\n# CHATGPT START\n"
       response += completion.choices[0].message.content
       response += '\n# CHATGPT END\n'
-      out(response)
+
     except Exception as e:
       exception_stack = traceback.format_exc()
-      out(f"Error: {str(e)}\n\n{exception_stack}")
+      response = f"Error: {str(e)}\n\n{exception_stack}"
+    finally:
+      DONE.set()
+      t0.join()
+      out(response)
 
   time.sleep(0.01)
